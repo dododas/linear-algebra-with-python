@@ -72,14 +72,3 @@ At this point the repository contains a single gh-pages branch. To push future c
 git push -u origin gh-pages
 ```
 
-### 4. Set up jekyll and katex
-
-``` 
-jekyll new . --force
-jekyll serve --incremental
-```
-
-```
-
-
-

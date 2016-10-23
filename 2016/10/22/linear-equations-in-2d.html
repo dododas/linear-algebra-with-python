@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>01. linear systems in 2D</title>
-  <meta name="description" content="Test syntax highlighting">
+  <meta name="description" content="Develop geometrical intuition for a 2D linear system Ax=b Ax = b Ax=b">
 
   <link rel="stylesheet" href="/linear-algebra-with-python/assets/main.css">
-  <link rel="canonical" href="https://github.com/dododas/linear-algebra-with-python/2016/10/22/linear-equations-in-2d.html">
+  <link rel="canonical" href="http://localhost:4000/linear-algebra-with-python/2016/10/22/linear-equations-in-2d.html">
   <link rel="alternate" type="application/rss+xml" title="Linear algebra with python" href="/linear-algebra-with-python/feed.xml">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
@@ -68,17 +68,56 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Test syntax highlighting</p>
+    <p>Develop geometrical intuition for a 2D linear system
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+Ax = b
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit">A</span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">b</span></span></span></span></span></p>
+
+<h3 id="setup">Setup</h3>
+
+<p>Start a python shell and import libraries:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span></code></pre></figure>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="c"># Change default color cycle</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'axes.prop_cycle'</span><span class="p">]</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s">"#377eb8"</span><span class="p">,</span><span class="s">"#ff7f00"</span><span class="p">,</span> <span class="s">"#4daf4a"</span><span class="p">,</span> 
+                                                    <span class="s">"#e41a1c"</span><span class="p">,</span> <span class="s">"#984ea3"</span><span class="p">,</span> <span class="s">"#a65628"</span><span class="p">])</span> </code></pre></figure>
 
-<p>Test math rendering</p>
+<h4 id="row-picture">Row picture</h4>
 
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mo>=</mo><mo>±</mo><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">
-c = \pm\sqrt{a^2 + b^2}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.913389em;"></span><span class="strut bottom" style="height:1.04em;vertical-align:-0.12661100000000008em;"></span><span class="base textstyle uncramped"><span class="mord mathit">c</span><span class="mrel">=</span><span class="mord">±</span><span class="sqrt mord"><span class="sqrt-sign" style="top:-0.07338899999999993em;"><span class="style-wrap reset-textstyle textstyle uncramped">√</span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit">a</span><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mord"><span class="mord mathit">b</span><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span style="top:-0.8333889999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span>​</span></span></span></span></span></span></p>
+<p>As a specific example, we consider the system
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtable><mtr><mtd><mrow><mn>2</mn><mi>x</mi><mo>−</mo><mi>y</mi></mrow></mtd><mtd><mrow><mrow></mrow><mo>=</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></mtd><mtd><mrow><mrow></mrow><mo>=</mo><mn>5</mn></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+2x - y &amp; = 1 \\
+x + y &amp; = 5
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.45em;"></span><span class="strut bottom" style="height:2.4000000000000004em;vertical-align:-0.9500000000000004em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit">x</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="col-align-l"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"></span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"></span><span class="mrel">=</span><span class="mord mathrm">5</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></p>
+
+<p>In the row picture, each equation represents a straight line (of the form <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex"> y = mx + b </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">=</span><span class="mord mathit">m</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathit">b</span></span></span></span>. The following code block plots these lines. The solution is their intersection point:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">## Demo 1: Row picture</span>
+<span class="c"># 2x - y = 1</span>
+<span class="c"># x + y = 5</span>
+
+<span class="c"># generate points</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c"># We need only 2 points to draw a line</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">-</span> <span class="n">x</span>
+
+<span class="c"># plot the lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">"w"</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="c"># show intersection point</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"ro"</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s">"r"</span><span class="p">)</span> 
+<span class="c"># add labels and gridlines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"y"</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span></code></pre></figure>
+
+<p>produces the following plot:</p>
 
   </div>
 

@@ -14,15 +14,17 @@ mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=["#377eb8","#ff7f00", "#4daf4
 # 2x - y = 1
 # x + y = 5
 
-# Generate points
+# generate points
 x = np.array([-5, 5]) # We need only 2 points to draw a line
 y1 = 2*x - 1
 y2 = 5 - x
 
-# Plot the lines
+# plot the lines
 plt.figure(figsize=(4, 4), facecolor="w", )
 plt.plot(x, y1, x, y2)
-plt.plot(2, 3, "ro", mec="r")
+# show intersection point
+plt.plot(2, 3, "ro", mec="r") 
+# add labels and gridlines
 plt.xlabel("x")
 plt.ylabel("y", rotation=0)
 plt.xlim(x)
