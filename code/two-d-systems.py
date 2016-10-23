@@ -33,7 +33,7 @@ plt.xlim(x)
 plt.ylim(ymin=-10)
 plt.grid(True)
 # uncomment below to save plot
-#plt.savefig("../figures/2d-row-picture.png", dpi=100)
+#plt.savefig("../figures/2d-row-picture.png", dpi=150)
 
 ## Demo 2: Column picture
 # what is the correct linear combination of the column vectors [2 1] and [-1 1] to 
@@ -54,7 +54,7 @@ plt.xlim((-3, 3))
 plt.ylim((-0.5, 5.5))
 plt.grid(True)
 # uncomment below to save plot
-#plt.savefig("../figures/2d-column-picture.png", dpi=100)
+#plt.savefig("../figures/2d-column-picture.png", dpi=150)
 
 # Demo 3: Visualizing how linear combinations of two vectors spans a plane
 xvals = np.linspace(-3, 3, 31)
