@@ -42,16 +42,19 @@ v1 = np.array([2, 1])
 v2 = np.array([-1, 1])
 lc = 2*v1 + 3*v2
 
-plt.figure(figsize=(4, 4), facecolor="w", )
+# uncomment next line to create a new figure. 
+#plt.figure(figsize=(4, 4), facecolor="w")
+plt.clf()
 plt.arrow(0, 0, v1[0], v1[1], color="#377eb8")
 plt.arrow(0, 0, v2[0], v2[1], color="#ff7f00")
 plt.arrow(0, 0, lc[0], lc[1], color="#e41a1c")
 
-plt.xlabel("x")
-plt.ylabel("y", rotation=0)
+plt.title("2d column picture")
 plt.xlim((-3, 3))
 plt.ylim((-0.5, 5.5))
 plt.grid(True)
+# uncomment below to save plot
+#plt.savefig("../figures/2d-column-picture.png", dpi=100)
 
 # Demo 3: Visualizing how linear combinations of two vectors spans a plane
 xvals = np.linspace(-3, 3, 31)
