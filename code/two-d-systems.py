@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-# Change default color cycle
+# Optional: change default color cycle (requires a recent version of matplotlib)
 mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=["#377eb8","#ff7f00", "#4daf4a", 
                                                     "#e41a1c", "#984ea3", "#a65628"]) 
 
