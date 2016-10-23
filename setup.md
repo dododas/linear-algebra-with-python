@@ -6,13 +6,11 @@ This document lists the steps to create and maintain this repository
 
 Log on to github and create a repository called `linear-algebra-with-python`
 
-### 2. Clone repository locally
+### 2. Create local folder
 
 ```
 cd linear-algebra
 mkdir code # subfolder for source code files
-git clone https://github.com/dododas/linear-algebra-with-python.git
-
 ```
 
 ### 3. Create a jekyll site
@@ -47,8 +45,10 @@ Insert the following line into the file `_includes/head.html` between the `<head
 ```
 cd linear-algebra-with-python
 touch .nojekyll
+git init
 git add . 
 git commit -m "First commit"
+git remote add origin https://github.com/dododas/linear-algebra-with-python.git
 git push origin master
 ```
 
