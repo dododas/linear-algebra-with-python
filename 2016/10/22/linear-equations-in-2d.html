@@ -84,7 +84,7 @@ Ax = b
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'axes.prop_cycle'</span><span class="p">]</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s">"#377eb8"</span><span class="p">,</span><span class="s">"#ff7f00"</span><span class="p">,</span> <span class="s">"#4daf4a"</span><span class="p">,</span> 
                                                     <span class="s">"#e41a1c"</span><span class="p">,</span> <span class="s">"#984ea3"</span><span class="p">,</span> <span class="s">"#a65628"</span><span class="p">])</span> </code></pre></figure>
 
-<h4 id="row-picture">Row picture</h4>
+<h3 id="row-picture">Row picture</h3>
 
 <p>As a specific example, we consider the system
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtable><mtr><mtd><mrow><mn>2</mn><mi>x</mi><mo>−</mo><mi>y</mi></mrow></mtd><mtd><mrow><mrow></mrow><mo>=</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></mtd><mtd><mrow><mrow></mrow><mo>=</mo><mn>5</mn></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">
@@ -111,6 +111,7 @@ x + y &amp; = 5
 <span class="c"># show intersection point</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"ro"</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s">"r"</span><span class="p">)</span> 
 <span class="c"># add labels and gridlines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"2d row picture"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"x"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"y"</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -118,6 +119,11 @@ x + y &amp; = 5
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span></code></pre></figure>
 
 <p>produces the following plot:</p>
+
+<p><img src="http://localhost:4000/linear-algebra-with-python/figures/2d-row-picture.png" alt="2d row picture" /></p>
+
+<h3 id="column-picture">Column picture</h3>
+
 
   </div>
 

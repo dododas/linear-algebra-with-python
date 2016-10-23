@@ -11,8 +11,9 @@ mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=["#377eb8","#ff7f00", "#4daf4
                                                     "#e41a1c", "#984ea3", "#a65628"]) 
 
 ## Demo 1: Row picture
-# 2x - y = 1
-# x + y = 5
+# 2x - y = 1 => y = 2x - 1
+# x + y = 5 => y = 5 - x
+# where do these lines intersect?
 
 # generate points
 x = np.array([-5, 5]) # We need only 2 points to draw a line
@@ -25,13 +26,18 @@ plt.plot(x, y1, x, y2)
 # show intersection point
 plt.plot(2, 3, "ro", mec="r") 
 # add labels and gridlines
+plt.title("2d row picture")
 plt.xlabel("x")
 plt.ylabel("y", rotation=0)
 plt.xlim(x)
 plt.ylim(ymin=-10)
 plt.grid(True)
+# uncomment below to save plot
+#plt.savefig("../figures/2d-row-picture.png", dpi=100)
 
 ## Demo 2: Column picture
+# what is the correct linear combination of the column vectors [2 1] and [-1 1] to 
+# get the column vector [1 5]?
 v1 = np.array([2, 1])
 v2 = np.array([-1, 1])
 lc = 2*v1 + 3*v2
@@ -47,7 +53,7 @@ plt.xlim((-3, 3))
 plt.ylim((-0.5, 5.5))
 plt.grid(True)
 
-# Demo 3: Visualizing linear combinations
+# Demo 3: Visualizing how linear combinations of two vectors spans a plane
 xvals = np.linspace(-3, 3, 31)
 yvals = np.linspace(-3, 3, 31)
 grid = np.column_stack([[x, y] for x in xvals for y in yvals])
