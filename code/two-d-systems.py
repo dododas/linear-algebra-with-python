@@ -56,16 +56,18 @@ plt.grid(True)
 # uncomment below to save plot
 #plt.savefig("../figures/2d-column-picture.png", dpi=150)
 
-# Demo 3: Visualizing how linear combinations of two vectors spans a plane
-xvals = np.linspace(-3, 3, 31)
-yvals = np.linspace(-3, 3, 31)
-grid = np.column_stack([[x, y] for x in xvals for y in yvals])
+# Demo 3: Visualizing how linear combinations of two vectors span a plane
+v1 = np.array([2, 1])
+v2 = np.array([-1, 1])
 a = np.column_stack((v1, v2))
+xvals = np.linspace(-3, 3, 61)
+yvals = np.linspace(-3, 3, 61)
+grid = np.column_stack([[x, y] for x in xvals for y in yvals])
 lc = np.dot(a, grid)
 
 # Plot linear combinations
 plt.figure(figsize=(4, 4), facecolor="w", )
-plt.plot(lc[0], lc[1], ".", color="#4daf4a", ms=4)
+plt.plot(lc[0], lc[1], ".", color="#4daf4a", ms=2)
 plt.arrow(0, 0, v1[0], v1[1], color="#377eb8", lw=2)
 plt.arrow(0, 0, v2[0], v2[1], color="#ff7f00", lw=2)
 
