@@ -33,7 +33,7 @@ plt.xlim(x)
 plt.ylim(ymin=-10)
 plt.grid(True)
 # uncomment below to save plot
-#plt.savefig("../figures/2d-row-picture.png", dpi=150)
+#plt.savefig("figures/2d-row-picture.png", dpi=150)
 
 ## Demo 2: Column picture
 # what is the correct linear combination of the column vectors [2 1] and [-1 1] to 
@@ -48,28 +48,35 @@ plt.clf()
 plt.arrow(0, 0, v1[0], v1[1], color="#377eb8")
 plt.arrow(0, 0, v2[0], v2[1], color="#ff7f00")
 plt.arrow(0, 0, lc[0], lc[1], color="#e41a1c")
-
+# add title labels, etc.
 plt.title("2d column picture")
+plt.text(2.1, 1.1, r"$v_1$", color="#377eb8")
+plt.text(-1.3, 1.1, r"$v_2$", color="#ff7f00")
+plt.text(1.1, 5.1, r"$2 v_1 + 3 v_2$", color="#e41a1c")
 plt.xlim((-3, 3))
 plt.ylim((-0.5, 5.5))
 plt.grid(True)
 # uncomment below to save plot
-#plt.savefig("../figures/2d-column-picture.png", dpi=150)
+#plt.savefig("figures/2d-column-picture.png", dpi=150)
 
 # Demo 3: Visualizing how linear combinations of two vectors span a plane
 v1 = np.array([2, 1])
 v2 = np.array([-1, 1])
 a = np.column_stack((v1, v2))
-xvals = np.linspace(-3, 3, 61)
-yvals = np.linspace(-3, 3, 61)
+xvals = np.linspace(-3, 3, 31)
+yvals = np.linspace(-3, 3, 31)
 grid = np.column_stack([[x, y] for x in xvals for y in yvals])
 lc = np.dot(a, grid)
 
-# Plot linear combinations
-plt.figure(figsize=(4, 4), facecolor="w", )
+# plot linear combinations
+#plt.figure(figsize=(4, 4), facecolor="w")
+plt.clf()
 plt.plot(lc[0], lc[1], ".", color="#4daf4a", ms=2)
 plt.arrow(0, 0, v1[0], v1[1], color="#377eb8", lw=2)
 plt.arrow(0, 0, v2[0], v2[1], color="#ff7f00", lw=2)
+plt.title("Column space visualization")
+# uncomment below to save plot
+#plt.savefig("figures/2d-column-space.png", dpi=150)
 
 # Demo 4: Solving the linear system
 # Solve for 1 linear combination
