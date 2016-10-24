@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/feed.xml" rel="self" type="application/atom+xml" /><link href="https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/" rel="alternate" type="text/html" /><updated>2016-10-24T08:46:19-06:00</updated><id>https://github.com/dododas/tree/gh-pages/linear-algebra-with-python//</id><title type="html">Linear algebra with python</title><subtitle>Linear algebra demos using python
-</subtitle><entry><title type="html">01. linear systems in 2D</title><link href="https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/2016/10/22/linear-equations-in-2d.html" rel="alternate" type="text/html" title="01. linear systems in 2D" /><published>2016-10-22T11:10:32-06:00</published><updated>2016-10-22T11:10:32-06:00</updated><id>https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/2016/10/22/linear-equations-in-2d</id><content type="html" xml:base="https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/2016/10/22/linear-equations-in-2d.html">&lt;p&gt;Develop geometrical intuition for a 2D linear system
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://dododas.github.io/linear-algebra-with-python/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="https://dododas.github.io/linear-algebra-with-python/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dododas.github.io/linear-algebra-with-python/" rel="alternate" type="text/html" /><updated>2016-10-24T09:42:51-06:00</updated><id>https://dododas.github.io/linear-algebra-with-python//</id><title type="html">Linear algebra with python</title><subtitle>Linear algebra demos using python
+</subtitle><entry><title type="html">01. linear systems in 2D</title><link href="https://dododas.github.io/linear-algebra-with-python/2016/10/22/linear-equations-in-2d.html" rel="alternate" type="text/html" title="01. linear systems in 2D" /><published>2016-10-22T11:10:32-06:00</published><updated>2016-10-22T11:10:32-06:00</updated><id>https://dododas.github.io/linear-algebra-with-python/2016/10/22/linear-equations-in-2d</id><content type="html" xml:base="https://dododas.github.io/linear-algebra-with-python/2016/10/22/linear-equations-in-2d.html">&lt;p&gt;Develop geometrical intuition for a 2D linear system
 &lt;span class=&quot;katex-display&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;v&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;
 Av = b
 &lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;strut bottom&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;base displaystyle textstyle uncramped&quot;&gt;&lt;span class=&quot;mord mathit&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;mord mathit&quot; style=&quot;margin-right:0.03588em;&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mord mathit&quot;&gt;b&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
@@ -60,7 +60,7 @@ x + y &amp;amp; = 5
 
 &lt;p&gt;produces the following plot:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/figures/2d-row-picture.png&quot; alt=&quot;2d row picture&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://dododas.github.io/linear-algebra-with-python/figures/2d-row-picture.png&quot; alt=&quot;2d row picture&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -90,7 +90,7 @@ x + y &amp;amp; = 5
 &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ylim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;5.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/figures/2d-column-picture.png&quot; alt=&quot;2d column picture&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://dododas.github.io/linear-algebra-with-python/figures/2d-column-picture.png&quot; alt=&quot;2d column picture&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -116,7 +116,7 @@ x + y &amp;amp; = 5
 
 &lt;p&gt;The green dots in the plot below show the specific linear combinations we generated from the two column vectors&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://github.com/dododas/tree/gh-pages/linear-algebra-with-python/figures/2d-column-space.png&quot; alt=&quot;2d column space&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://dododas.github.io/linear-algebra-with-python/figures/2d-column-space.png&quot; alt=&quot;2d column space&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
