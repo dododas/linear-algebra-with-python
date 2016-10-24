@@ -20,8 +20,9 @@ x = np.array([-5, 5]) # We need only 2 points to draw a line
 y1 = 2*x - 1
 y2 = 5 - x
 
-# plot the lines
+# create new figure
 plt.figure(figsize=(4, 4), facecolor="w", )
+# plot the lines
 plt.plot(x, y1, x, y2)
 # show intersection point
 plt.plot(2, 3, "ro", mec="r") 
@@ -32,7 +33,7 @@ plt.ylabel("y", rotation=0)
 plt.xlim(x)
 plt.ylim(ymin=-10)
 plt.grid(True)
-# uncomment below to save plot
+# uncomment next line to save plot
 #plt.savefig("figures/2d-row-picture.png", dpi=150)
 
 ## Demo 2: Column picture
@@ -56,7 +57,7 @@ plt.text(1.1, 5.1, r"$2 v_1 + 3 v_2$", color="#e41a1c")
 plt.xlim((-3, 3))
 plt.ylim((-0.5, 5.5))
 plt.grid(True)
-# uncomment below to save plot
+# uncomment next line to save plot
 #plt.savefig("figures/2d-column-picture.png", dpi=150)
 
 # Demo 3: Visualizing how the column space of a 2-by-2 matrix spans the 2d plane
@@ -69,6 +70,7 @@ grid = np.column_stack([[x, y] for x in xvals for y in yvals])
 lc = np.dot(a, grid)
 
 # plot linear combinations
+# uncomment next line to create a new figure. 
 #plt.figure(figsize=(4, 4), facecolor="w")
 plt.clf()
 plt.plot(lc[0], lc[1], ".", color="#4daf4a", ms=2)
