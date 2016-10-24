@@ -59,7 +59,7 @@ plt.grid(True)
 # uncomment below to save plot
 #plt.savefig("figures/2d-column-picture.png", dpi=150)
 
-# Demo 3: Visualizing how linear combinations of two vectors span a plane
+# Demo 3: Visualizing how the column space of a 2-by-2 matrix spans the 2d plane
 v1 = np.array([2, 1])
 v2 = np.array([-1, 1])
 a = np.column_stack((v1, v2))
@@ -74,6 +74,8 @@ plt.clf()
 plt.plot(lc[0], lc[1], ".", color="#4daf4a", ms=2)
 plt.arrow(0, 0, v1[0], v1[1], color="#377eb8", lw=2)
 plt.arrow(0, 0, v2[0], v2[1], color="#ff7f00", lw=2)
+plt.text(2.5, 1.1, r"$v_1$", color="#377eb8")
+plt.text(-2.5, 1.1, r"$v_2$", color="#ff7f00")
 plt.title("Column space visualization")
 # uncomment below to save plot
 #plt.savefig("figures/2d-column-space.png", dpi=150)
