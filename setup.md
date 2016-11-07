@@ -8,10 +8,11 @@ Log on to github and create a repository called `linear-algebra-with-python`
 
 ### 2. Create local folder
 
-```
+{% highlight bash %}
+mkdir linear-algebra
 cd linear-algebra
 mkdir code # subfolder for source code files
-```
+{% endhighlight %}
 
 ### 3. Create a jekyll site
 
