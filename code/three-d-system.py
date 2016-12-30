@@ -1,27 +1,31 @@
 #! /usr/bin/python3
 
-# Visualize and solve systems of linear equations in 2d and 3d
+# Visualize and solve systems of linear equations in 3d
 
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 # Optional: change default color cycle (requires a recent version of matplotlib)
-mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=["#377eb8","#ff7f00", "#4daf4a", 
+# mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=["#377eb8","#ff7f00", "#4daf4a", 
                                                     "#e41a1c", "#984ea3", "#a65628"]) 
 
-## Demo 1: Row picture
-# 2x - y = 1 => y = 2x - 1
-# x + y = 5 => y = 5 - x
-# where do these lines intersect?
+## Demo 1: Row picture with 3 linear equations 
+# 2u + v + w = 5     =>  u = (- v - w + 5)/2
+# 4u - 6v = -2       =>  u = (6v - 2)/4
+# -2u + 7v + 2w = 9  =>  u = (7v + 2w - 9)/2
 
-# generate points
-x = np.array([-5, 5]) # We need only 2 points to draw a line
-y1 = 2*x - 1
-y2 = 5 - x
+# Generate 3 points in the (v, w) plane
+v = np.array([0, 5])
+w = np.array([0, 5])
+v, w = np.meshgrid(v, w)
+u1 = (- v - w + 5)/2
+u2 = (6*v - 2)/4
+u3 = (7*v + 2*w - 9)/2
 
 # create new figure
-plt.figure(figsize=(4, 4), facecolor="w")
+fig = plt.figure(figsize=(4, 4), facecolor="w", )
 # plot the lines
 plt.plot(x, y1, x, y2)
 # show intersection point
