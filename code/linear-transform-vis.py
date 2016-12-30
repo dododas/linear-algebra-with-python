@@ -13,7 +13,14 @@ xvals = np.linspace(-4, 4, 9)
 yvals = np.linspace(-3, 3, 7)
 xygrid = np.column_stack([[x, y] for x in xvals for y in yvals])
 
-# Assign color based on position
+# Apply linear transform
+a = np.column_stack([[2, 1], [-1, 1]])
+print(a)
+uvgrid = np.dot(a, xygrid)
+
+# Plot original and transformed grid points
+
+# This function assigns a unique color based on position
 def colorizer(x, y):
     """
     Map x-y coordinates to a rgb color
@@ -29,7 +36,7 @@ def colorizer(x, y):
 # Map grid coordinates to colors
 colors = list(map(colorizer, xygrid[0], xygrid[1]))
 
-# Plot grid points 
+# Plot x-y grid points 
 plt.figure(figsize=(4, 4), facecolor="w")
 plt.scatter(xygrid[0], xygrid[1], s=36, c=colors, edgecolor="none")
 # Set axis limits
@@ -39,11 +46,6 @@ plt.title("Original grid in x-y space")
 # uncomment to save plot
 #plt.savefig("../figures/grid-original.png", dpi=150)
 #plt.savefig("../figures/grid-original-small.png", dpi=75)
-
-# Apply linear transform
-a = np.column_stack([[2, 1], [-1, 1]])
-print(a)
-uvgrid = np.dot(a, xygrid)
 
 # Plot transformed grid points
 plt.figure(figsize=(4, 4), facecolor="w")
@@ -84,7 +86,7 @@ def make_plots(transarray, color, outdir="png-frames", figuresize=(4,4), figured
     '''
     nsteps = transarray.shape[0]
     ndigits = len(str(nsteps)) # to determine filename padding
-    maxval = transarray.max() # to set axis limits
+    maxval = np.abs(transarray.max()) # to set axis limits
     # create directory if necessary
     import os
     if not os.path.exists(outdir):
@@ -105,11 +107,11 @@ def make_plots(transarray, color, outdir="png-frames", figuresize=(4,4), figured
     plt.ion()
 
 # Generate figures
-make_plots(transform, colors)
+make_plots(transform, colors, outdir="tmp")
 
 # Convert to gif (works on linux/os-x, requires image-magick)
 from subprocess import call
-call("cd png-frames && convert -delay 10 *.png ../animation.gif", shell=True)
+call("cd png-frames && convert -delay 10 frame-*.png ../animation.gif", shell=True)
 # Optional: clean up png files
 call("rm -f png-frames/*.png", shell=True)
 
@@ -130,7 +132,7 @@ transform = stepwise_transform(a, xygrid, nsteps=steps)
 make_plots(transform, colors)
 # see above to create gif
 
-# Example 4: Pertmutation
+# Example 4: Permutation
 a = np.column_stack([[0, 1], [1, 0]])
 print(a)
 # Generate intermediates
@@ -145,5 +147,4 @@ print(a)
 transform = stepwise_transform(a, xygrid, nsteps=steps)
 make_plots(transform, colors)
 # see above to create gif
-
 
